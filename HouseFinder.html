@@ -1,11 +1,118 @@
 <!DOCTYPE html>
-
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title></title>
+        <title>House Finder</title>
+        <style type="text/css">
+            .roundedtextbox {
+                border-radius: 5px;
+                -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;
+                line-height:  20px;
+            }
+            .roundedtextbox:invalid {
+                background-color: #f00;
+            }
+            .textAlignCenter{
+                text-align: center;
+            }
+            .hide{
+                display: none;
+            }
+            .show{
+                display: block;
+            }
+        </style>
+        <script type="text/javascript">
+            function validateNumber(obj) {
+                if (isNaN(obj.value)) {
+                    obj.style.backgroundColor = "Red";
+                } else {
+                    obj.style.backgroundColor = "White";
+                }
+                return false;
+            }
+            function calculatePrice() {
+                document.getElementById("divHouseFinderMatch").ClassName = "hide";
+                if (document.getElementById("txtIncome").value == "") {
+                    alert("Please enter the income");
+                    return false;
+                }
+                var maxPricetoAffordHouse = document.getElementById("txtIncome").value * 4;
+                alert("You can afford a house that costs up to $" + maxPricetoAffordHouse + ".");
+                return false;
+            }
+            function shopForHouses() {
+                var alertMsgs = "";
+                if (document.getElementById("txtIncome").value == "") {
+                    alertMsgs += "Please enter the income.  \n";
+                }
+                if(isNaN(document.getElementById("txtIncome").value)){
+                  alertMsgs += "Please enter the valid income in numbers.  \n";   
+                }
+                if (document.getElementById("txtZipcode").value == "") {
+                    alertMsgs += "Please enter the zipcode.  \n";
+                }
+                if(isNaN(document.getElementById("txtZipcode").value)){
+                  alertMsgs += "Please enter the valid zipcode in numbers.  \n";   
+                }
+                if (document.getElementById("txtBedrooms").value == "") {
+                    alertMsgs += "Please enter the bedrooms. \n";
+                }
+                if(isNaN(document.getElementById("txtBedrooms").value)){
+                  alertMsgs += "Please enter the valid bedroom in numbers.  \n";   
+                }
+                if (alertMsgs != "") {
+                    alert(alertMsgs);
+                    return false;
+                }
+                document.getElementById("divHouseFinderMatch").ClassName = "show";
+                return false;
+            }
+        </script>
     </head>
     <body>
-        
+        <div><h1>Ready to find New House?</h1></div>
+        <table style="padding: 2px;">
+            <tr>
+                <td rowspan="4" style="border: solid 1px black;"><img src="Images/house.jpg" alt="house" width="150px" height="150px" /></td>
+                <td>Enter your Annual Income
+                </td>
+                <td><input type="text" id="txtIncome" class="roundedtextbox" onblur="validateNumber(this);" /></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Enter your Zip Code
+                </td>
+                <td><input type="text" id="txtZipcode" class="roundedtextbox" maxlength="5" onblur="validateNumber(this);" /></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Enter No of Bedrooms
+                </td>
+                <td><input type="number" id="txtBedrooms" class="roundedtextbox" min="1" max="4"/></td>
+            </tr>
+            <tr>
+                <td class="textAlignCenter"><input type="button" id="btnCalPrice" value="Calculate Price" class="roundedtextbox" onclick="javascript:calculatePrice();" /></td>
+                </td>
+                <td class="textAlignCenter"><input type="button" id="btnShopforHouses" value="Shop for Houses" class="roundedtextbox" onclick="javascript:shopForHouses();" /></td>
+            </tr>
+        </table>
+        <br />
+        <br />
+        <div id="divHouseFinderMatch" class="hide">
+            <h2>The following houses were found:</h2>
+            <table>
+                <tr>
+                    <td>110 Elm Street <input type="button" value="View" id="btnView1" src="https://www.google.com/maps" /></td>
+                </tr>
+                <tr>
+                    <td>400 Maple Lane <input type="button" value="View" id="btnView2" src="https://www.google.com/maps" /></td>
+                </tr>
+                <tr>
+                    <td>847 Main Street <input type="button" value="View" id="btnView3" src="https://www.google.com/maps" /></td>
+                </tr>
+            </table>
+        </div>
     </body>
 </html>
