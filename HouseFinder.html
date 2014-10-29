@@ -19,9 +19,6 @@
             .hide{
                 display: none;
             }
-            .show{
-                display: block;
-            }
         </style>
         <script type="text/javascript">
             function validateNumber(obj) {
@@ -33,7 +30,7 @@
                 return false;
             }
             function calculatePrice() {
-                document.getElementById("divHouseFinderMatch").ClassName = "hide";
+                document.getElementById("divHouseFinderMatch").style.display = "none";
                 if (document.getElementById("txtIncome").value == "") {
                     alert("Please enter the income");
                     return false;
@@ -66,7 +63,7 @@
                     alert(alertMsgs);
                     return false;
                 }
-                document.getElementById("divHouseFinderMatch").ClassName = "show";
+                document.getElementById("divHouseFinderMatch").style.display = "block";
                 return false;
             }
         </script>
@@ -102,15 +99,15 @@
         <br />
         <div id="divHouseFinderMatch" class="hide">
             <h2>The following houses were found:</h2>
-            <table>
+            <table style="padding: 5px;">
                 <tr>
-                    <td>110 Elm Street <input type="button" value="View" id="btnView1" src="https://www.google.com/maps" /></td>
+                    <td>110 Elm Street <a id="btnView1" href="https://www.google.com/maps">View</a></td>
                 </tr>
                 <tr>
-                    <td>400 Maple Lane <input type="button" value="View" id="btnView2" src="https://www.google.com/maps" /></td>
+                    <td>400 Maple Lane <a id="btnView2" href="https://www.google.com/maps">View</a></td>
                 </tr>
                 <tr>
-                    <td>847 Main Street <input type="button" value="View" id="btnView3" src="https://www.google.com/maps" /></td>
+                    <td>847 Main Street <a id="btnView3" href="https://www.google.com/maps">View</a></td>
                 </tr>
             </table>
         </div>
