@@ -19,6 +19,21 @@
             .hide{
                 display: none;
             }
+            footer{
+               position:absolute;
+               bottom:0;
+               width:100%;
+               height:30px;   /* Height of the footer */
+               background-color:gray;
+               text-align: center;
+            }
+            .back{
+                font-size: 16px;
+                font-family: 'Comic Sans MS';
+            }
+            .back:hover{
+                background-color: #ffd800;
+            }
         </style>
         <script type="text/javascript">
             function validateNumber(obj) {
@@ -87,7 +102,7 @@
             <tr>
                 <td>Enter No of Bedrooms
                 </td>
-                <td><input type="number" id="txtBedrooms" class="roundedtextbox" min="1" max="4"/></td>
+                <td><input type="number" id="txtBedrooms" class="roundedtextbox" min="1" max="4" /></td>
             </tr>
             <tr>
                 <td class="textAlignCenter"><input type="button" id="btnCalPrice" value="Calculate Price" class="roundedtextbox" onclick="javascript:calculatePrice();" /></td>
@@ -111,5 +126,7 @@
                 </tr>
             </table>
         </div>
+        <footer>
+            <a id="lnkBack" href="Demo.html" class="back">Back</a></footer>
     </body>
 </html>

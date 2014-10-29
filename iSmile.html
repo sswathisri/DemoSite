@@ -1,11 +1,55 @@
 <!DOCTYPE html>
-
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <title></title>
+        <title>Interactive Smiley page</title>
+        <script type="text/javascript" src="Js/cookie.js"></script>
+        <script type="text/javascript">
+            var username;
+            function showWelcomeMsg() {
+                //check cookie is enabled in browser, if yes, get the username from cookie
+                if (navigator.cookieEnabled)
+                    username = readCookie("ISmile_username");
+                if (username != null) {
+                    alert("Hello " + username + " I missed you.");
+                } else {
+                    alert("Hello, I am your pet");
+                }
+                return false;
+            }
+            function touchSmile() {
+                if (username) {
+                    alert("I like the attention, " + username + ". Thank you.");
+                } else {
+                    username = prompt("What is your name?", "Enter your name: ")
+                    if (username) {
+                        alert("It is good to meet you, " + username);
+                        //check cookie is enabled in browser, if yes, store the username in cookie
+                        if (navigator.cookieEnabled)
+                            writeCookie("ISmile_username", username, 1);
+                        else
+                            alert("Cookies aren't supported/enabled in your browser, which means I won't remember you later. I'm sorry.");
+                    }
+                }
+                document.getElementById("imgSmiley").src = "Images/happySmile.jpg";
+                setTimeout(function () { document.getElementById("imgSmiley").src = "Images/smilelonely.jpg"; }, 30 * 1000);
+                return false;
+            }
+
+            function reseizeSmiley() {
+                document.getElementById("imgSmiley").style.height = ((document.body.clientHeight - 100) * 0.9) + "px";
+            }
+        </script>
+        <style type="text/css">
+            .pagecenter{
+              text-align: center;
+              margin-top: 100px;
+            }
+        </style>
     </head>
-    <body>
-        
+    <body onload="showWelcomeMsg();" onresize="reseizeSmiley();">
+        <div class="pagecenter">
+            <img id="imgSmiley" src="Images/nosmile.png" alt="Click to make Smiley to Smile" title="Click to make Smiley to Smile" onclick="javascript:touchSmile();" />
+        </div>
     </body>
 </html>
