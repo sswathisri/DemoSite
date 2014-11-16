@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Draw shapes using HTML5 - svg and canvas </title>
+        <style>
+            table tr td{
+                border:  1px solid black;
+                text-align: center;
+                width: 150px;
+                height: 100px;
+            }
+             table thead tr td{
+                border:  1px solid black;
+                text-align: center;
+                background-color: #808080;
+                width: 150px;
+                height: 30px;
+                text-shadow: 2px 2px 2px yellow;
+            }
+            
+        </style>
+    </head>
+    <body>
+        <section>
+            <table style="border: 2px solid black; border-collapse: collapse; padding: 10px;">
+                <thead>
+                <tr>
+                    <td>Shape</td>
+                    <td>Drawn using SVG</td>
+                    <td>Drawn using Canvas</td>
+                </tr></thead>
+                <tbody>
+                <tr>
+                    <td>Line</td>
+                    <td>
+                        <svg id="svgline" width="50" height="50">
+                            <line x1="10" y1="10" x2="40" y2="40" stroke="blue" stroke-width="3" />
+                        </svg>
+                    </td>
+                    <td>
+                        <canvas id="canvasline" width="50" height="50"></canvas>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Rectangle</td>
+                    <td>
+                        <svg id="svgRect" width="110" height="60">
+                            <rect width="100" height="50" style="stroke: #00ff21;stroke-width:3px;fill: #b6ff00;">
+                        </svg>
+                    </td>
+                    <td><canvas id="canvasRect" width="110" height="60"></canvas></td>
+                </tr>
+                <tr>
+                    <td>Square</td>
+                    <td>
+                        <svg id="svgsquare" width="50" height="50">
+                            <rect width="50" height="50" style="stroke: #808080;stroke-width:3px;fill: #ffd800;">
+                        </svg>
+                    </td>
+                    <td>
+                        <canvas id="canvassquare" width="50" height="50"></canvas>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Circle</td>
+                    <td>
+                        <svg id="svgCircle" width="70" height="70">
+                            <circle cx="35" cy="35" r="30" stroke="black" stroke-width="4" fill="red" />
+                        </svg>
+                    </td>
+                    <td>
+                        <canvas id="canvascircle" width="70" height="70"></canvas>
+                    </td>
+                </tr>
+                    </tbody>
+            </table>
+        </section>
+        <br />
+        <section>
+        Country:
+            <input list="dlCountry" />
+            <datalist id="dlCountry">
+                <option value="India" id="1"></option>
+                <option value="Italy" id="2"></option>
+            </datalist>
+            <br />
+          Simple addition Using Output element:
+            <form onsubmit="return false;" oninput="ab.value=parseInt(a.value) +parseInt(b.value);">
+                <input type="number" id="a" min="2" max="10" /> + <input type="number" id="b" min="2" max="10" /> = <output name="ab"></output>
+            </form>
+        </section>
+        <script type="text/javascript">
+            //line
+            var canvasline = document.getElementById("canvasline");
+            var clctx = canvasline.getContext("2d");
+            clctx.moveTo(10, 10);
+            clctx.lineTo(40, 40);
+            clctx.lineWidth = 3;
+            clctx.strokeStyle = "blue";
+            clctx.stroke();
+            
+            //rectangle
+            var canvasRect = document.getElementById("canvasRect");
+            var crctx = canvasRect.getContext("2d");
+            crctx.fillStyle = "#b6ff00";
+            crctx.lineWidth = 3;
+            //crctx.strokeStyle = "#00ff21";
+            crctx.fillRect(0, 0, 100, 50);
+            
+            //square
+            var canvassquare = document.getElementById("canvassquare");
+            var csctx = canvassquare.getContext("2d");
+            csctx.fillStyle = "#ffd800";
+            csctx.lineWidth = 3;
+            //csctx.strokeStyle = "#808080";
+            csctx.fillRect(0, 0, 50, 50);
+            
+            //circle
+            var canvascircle = document.getElementById("canvascircle");
+            var ccctx = canvascircle.getContext("2d");
+            var cx = canvascircle.width / 2;
+            var cy = canvascircle.height / 2;
+            var r = 30;
+            ccctx.beginPath();
+            ccctx.arc(cx, cy, r, 0, 2 * Math.PI, false);
+            ccctx.fillStyle = "red";
+            ccctx.fill();
+            ccctx.lineWidth = 4;
+            ccctx.strokeStyle = "black";
+            ccctx.stroke();
+        </script>
+    </body>
+</html>
